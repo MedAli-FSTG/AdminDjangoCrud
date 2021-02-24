@@ -1,0 +1,40 @@
+{% extends 'admin.html' %}
+
+
+{% block body %}
+
+
+
+<div class="container">
+<center><h3 class="jumbotron bg-info">Liste des motifs</h3></center><br />
+
+
+<br /><table class="table table-striped ">
+    <thead class=" bg-info">
+        <tr>
+            <th>motif_ID</th>
+            <th>Nom</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for motif in motifs %}
+        <tr>
+            <td>{{ motif.id }}</td>
+            <td>{{ motif.nom }}</td>
+            <td ><img class="img img-responsive" src="media/{{ motif.motif_Img.name }}" alt="Image du motif" style="margin: auto; width: 60%;" ></td>
+            <td>{{ motif.description }}</td>
+            <td class="">
+                <div class="col-md-12 btn-group-vertical center-block">
+                <a  class="btn btn-warning  " href="update/{{ motif.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                 <br><a class="btn btn-danger " href="delete/{{ motif.id }}" style="margin-top: auto;"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </div>
+                </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
